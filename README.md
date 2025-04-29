@@ -1,4 +1,4 @@
-# ClearThePoints
+# UpgradeClearThePoints
 
 ## Giới thiệu
 
@@ -14,5 +14,6 @@ B3: npm install
 
 B4: npm run dev
 
-## Demo: 
-Link: https://clear-the-points-seven.vercel.app/
+## Demo:
+
+Link: https://upgrade-clear-the-points.vercel.app
