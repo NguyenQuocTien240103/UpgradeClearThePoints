@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import {useCountdownIntervalStore, useResultStore, usePointStore} from '../../store'
+import './index.css'
 interface NodeProps {
     number: number;
     visible: boolean;
@@ -14,7 +15,8 @@ export const NodeComponent: React.FC<NodeProps> = ({ number, visible, countdown,
   const timeCountdownDisplayRef = useRef<HTMLDivElement>(null); // Thành phần hiển thị thời gian đếm ngược
   const { addIntervalId } = useCountdownIntervalStore(); // Lưu trữ idInterval của bộ đếm ngược thời gian
   const { resultState } = useResultStore(); // Lấy trạng thái kết quả
-  const { points } = usePointStore(); // Lấy số điểm
+  const { points } = usePointStore(); // Lấy số điểm 
+
   useEffect(() => {
     if(!isClicked) return; // Nếu node chưa bấm thì không hiển thị countdown
     let initialTimeCountdown = countdown!; // Thời gian ban đầu
@@ -41,13 +43,14 @@ export const NodeComponent: React.FC<NodeProps> = ({ number, visible, countdown,
   return (
       visible && (
         <div
+          className={
+            `${isClicked ? 'fade-in' : ''} ${isClicked && resultState === 'Game over' ? 'paused' : ''}`
+          }
           style={{
             zIndex: parseInt(points) - number,
             width: '50px', 
             height: '50px', 
-            backgroundColor: isClicked ? 'red' : 'white', 
-            transition: isClicked ? 'background-color 3s ease' : 'none', 
-            // transition: 'background-color 3s ease',
+            backgroundColor: 'white', 
             display: 'inline-block',
             textAlign: 'center',
             lineHeight: '50px',

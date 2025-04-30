@@ -90,10 +90,10 @@ const Game: React.FC = () => {
       // Nếu bấm đúng thứ tự, bắt đầu đếm ngược
       currentNodeRef.current = currentNodeRef.current + 1;
 
-      // Sau 2s thì node sẽ biến mất
+      // Sau 3s thì node sẽ biến mất
       const timeoutId = setTimeout(() => {
         setNodes((prevNodes) => prevNodes.filter((n) => n.number !== node));
-      }, 2000);
+      }, 3000);
 
       setTimeoutIds((prev) => [...prev, timeoutId]);
 
@@ -200,7 +200,7 @@ const Game: React.FC = () => {
             />
           ))}
         </div>
-        {gameState === 'playing' && (currentNodeRef.current - 1) !== parseInt(points) ? <div><span>Next: {currentNodeRef.current}</span></div> : <div></div>}
+        {gameState === 'playing' && (currentNodeRef.current - 1) !== parseInt(points) && resultState !== 'Game over' ? <div><span>Next: {currentNodeRef.current}</span></div> : <div></div>}
 
       </div>
     </div>
