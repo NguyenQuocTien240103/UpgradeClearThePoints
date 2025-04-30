@@ -62,7 +62,7 @@ const Game: React.FC = () => {
         setTimeoutIds([]);
     }
     // Kiểm tra điều kiện đầu vào
-    if (points === '' || parseInt(points) <= 0) {
+    if (points === '' || parseInt(points) <= 0 || !/^\d+$/.test(points)) {
       alert('Please enter the number of nodes');
       return;
     }
